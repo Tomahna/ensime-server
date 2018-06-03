@@ -137,7 +137,7 @@ object Server {
   def loadConfig(): Config = {
     val fallback = ConfigFactory.load()
     val user = List(
-      parseServerConfig(fallback).config.file.getParent,
+      parseServerConfig(fallback).config.file.toAbsolutePath().getParent,
       Paths.get(
         sys.env.get("XDG_CONFIG_HOME").getOrElse(sys.props("user.home"))
       )

@@ -158,6 +158,9 @@ name := "ensime"
 dependsOn(server)
 publishLocal := {}
 publish := {}
+run := (server / Compile / run).evaluated
+(server / Compile / run / baseDirectory) := baseDirectory.value
+(server / Compile / run / javaOptions) ++= Seq("-Xmx4g", "-Densime.config=.ensime")
 test in assembly := {}
 aggregate in assembly := false
 assemblyMergeStrategy in assembly := {
